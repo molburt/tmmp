@@ -29,10 +29,6 @@ app.get('/coming_soon', function(req, res) {
     res.render("coming_soon");
 });
 
-app.get('/view_recipe', function(req, res) {
-    res.render("view_recipe");
-});
-
 app.get('/recipe_book', function(req, res) {
     mongodb.connect(url, function(err, db) {
         var collection = db.collection('recipes');
@@ -76,21 +72,115 @@ app.get("/edit_recipe/:id", function(req,res){
     });
 });
 
+app.get('/menu_planner', function(req, res) {
+    mongodb.connect(url, function(err, db) {
+        var collection = db.collection('menu');
+        collection.find({}).toArray(
+            function(err, results){
+                res.render("menu_planner", {menu: results});
+            }
+        );
+    });
+});
 
+// WORK IN PROGRESS CODE
+app.post('/menu_planner', function(req, res) {
+    mongodb.connect(url, function(err, db){
+        var collection = db.collection('menu');
+        collection.update( { "_id": "5924abc11963d82248e2f220" }, // this id works?
+        {
+            sun1: req.body.sun1,
+            mon1: req.body.mon1,
+            tue1: req.body.tue1,
+            wed1: req.body.wed1,
+            thu1: req.body.thu1,
+            fri1: req.body.fri1,
+            sat1: req.body.sat1,
+            sun2: req.body.sun2,
+            mon2: req.body.mon2,
+            tue2: req.body.tue2,
+            wed2: req.body.wed2,
+            thu2: req.body.thu2,
+            fri2: req.body.fri2,
+            sat2: req.body.sat2
+        },
+        function(err, results){
+            res.redirect('/menu_planner');
+        })
+    })
+});
 
-// app.post('/movies', function(req, res) {
+// SAMPLE CODE
+// collection.update({ "_id":doc._id }, 
+// { $pull : { "scores" : {
+// $and: [ {"type":"homework"}, { "score":lowScore} ]
+// } } },
+// { "safe":true },
+// function( err, result ) {
+// if (err) {
+//  console.log(err);
+//   }
+// } // update callback
+// ); 
+
+// WHAT IS THIS?! (Debug?)
+// app.post('/menu_planner', function(req, res) {
 //     mongodb.connect(url, function(err, db){
-//         var collection = db.collection('movies');
-//         var movie = {
-//             title: req.body.title,
-//             year: req.body.year,
-//             description: req.body.description
+//         var collection = db.collection('menu');
+//         var plan = {
+//             sun1: req.body.sun1,
+//             mon1: req.body.mon1,
+//             tue1: req.body.tue1,
+//             wed1: req.body.wed1,
+//             thu1: req.body.thu1,
+//             fri1: req.body.fri1,
+//             sat1: req.body.sat1,
+//             sun2: req.body.sun2,
+//             mon2: req.body.mon2,
+//             tue2: req.body.tue2,
+//             wed2: req.body.wed2,
+//             thu2: req.body.thu2,
+//             fri2: req.body.fri2,
+//             sat2: req.body.sat2
 //         };
-//         collection.insertOne(movie, function(err, results) {
-//             res.redirect('/movies');
-//         });
-//     });
+//         collection.insertOne(plan, function(err, results){
+//             res.redirect('/menu_planner')
+//         })
+//     })
 // });
+
+// DEBUG PAGE
+app.get('/menus', function(req, res) {
+    mongodb.connect(url, function(err, db){
+        var collection = db.collection('menu');
+        collection.find({}).toArray(
+            function(err, results){
+                res.render("test", {menu: results});  
+            }
+        );
+    }) 
+});
+
+// DEBUG
+app.get('/menu_form', function(req, res){
+    res.render("menu_form"/*, {
+        process: 'edit',
+        sun1: ,
+        mon1: ,
+        tue1: ,
+        wed1: ,
+        thu1: ,
+        fri1: ,
+        sat1: ,
+        sun2: ,
+        mon2: ,
+        tue2: ,
+        wed2: ,
+        thu2: ,
+        fri2: ,
+        sat2: 
+    }*/);
+});
 
 
 // POST
@@ -205,7 +295,6 @@ app.post('/recipe_form', function(req, res) {
             unit_24: req.body.unit_24,
             ing_24: req.body.ing_24,
             prep_24: req.body.prep_24,
-            // directions here
             step_0: req.body.step_0,
             step_1: req.body.step_1,
             step_2: req.body.step_2,
@@ -243,7 +332,6 @@ app.post('/recipe_form', function(req, res) {
 // DELETE
 app.delete('/recipe_book/:id', function(req, res) {
     var id = new objectId(req.params.id);
-    console.log("Deleting..." + id);
     mongodb.connect(url, function(err, db){
         var collection = db.collection('recipes');
         collection.remove({_id: id}, function(err, results) {
@@ -252,8 +340,18 @@ app.delete('/recipe_book/:id', function(req, res) {
     });
 });
 
+app.delete('/menus/:id', function(req, res) {
+    var id = new objectId(req.params.id);
+    mongodb.connect(url, function(err, db){
+        var collection = db.collection('menus');
+        collection.remove({_id: id}, function(err, results){
+            res.redirect('/menus');         
+        });
+    }); 
+});
 
-// UPDATE
+
+// // UPDATE
 // app.post("/recipe_book/edit_:id", function(req,res){
 //     var id = new objectId(req.params.id);
 //     mongodb.connect(url, function(err, db){
@@ -264,13 +362,13 @@ app.delete('/recipe_book/:id', function(req, res) {
 //             }
 //         )
 //     });
-// //   users.forEach(function(user,index){
-// //     if(user.name == req.params.name){
-// //       users[index].name = req.body.name
-// //       users[index].age = req.body.age
-// //       res.redirect("/users/")
-// //     }
-// //   })
+//   users.forEach(function(user,index){
+//     if(user.name == req.params.name){
+//       users[index].name = req.body.name
+//       users[index].age = req.body.age
+//       res.redirect("/users/")
+//     }
+//   })
 // });
 
 

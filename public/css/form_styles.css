@@ -82,5 +82,5 @@ input {
 }
 
 .invisible {
-    /* DEBUG display: none;*/
+    display: none;
 }
