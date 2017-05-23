@@ -49,8 +49,38 @@ input {
     height: 25px;
 }
 
+.delete_button {
+    background-color: #CD0000;
+    font-size: 18px;
+    margin-left: 25px;
+}
+
 #submit {
     font-size: 18px;
     height: 30px;
     padding: 0px 20px;
+}
+
+.tblAmount {
+  width: 50px;
+  vertical-align: top;
+}
+
+.tblUnit {
+  width: 100px;
+  vertical-align: top;
+}
+
+.tblIng {
+  width: 250px;
+  vertical-align: top;
+}
+
+.tblPrep {
+  width: 450px;
+  vertical-align: top;
+}
+
+.invisible {
+    /* DEBUG display: none;*/
 }

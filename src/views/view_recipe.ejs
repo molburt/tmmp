@@ -1,6 +1,7 @@
  <!DOCTYPE html>
 <html>
   <head>
+    <link rel="stylesheet" href="/css/form_styles.css">
     <%- include('partials/head'); %>
   </head>
   <body>
@@ -10,21 +11,38 @@
         <div class="bodyText">
             <div class="centered">
               <h1 id="name">
-                Recipe Name
+                <%= recipe.name %>
               </h1>
+
               <h2 id="author">
-                by Author
+                by <%= recipe.author %>
               </h2>
+
               <div id="pic">
-                <img src="https://placehold.it/650x450" alt="Recipe Picture">
+                <% if(recipe.picture != "") { %>
+                  <img src="<%= recipe.picture %>">
+                <% } %>
+                <!-- else no picture available or just no pic? -->
+                <!-- enforce max dimensions 650x450 or so -->
+                <!--<img src="https://placehold.it/650x450" alt="Recipe Picture">-->
               </div>
+
               <div id="times">
                 <span>
-                  Prep Time: 0 hr, 0 min
+                  <% if(recipe.prepHours == 0 && recipe.prepMin == 0) { %>
+                    Prep Time: n/a
+                  <% } else { %>
+                    Prep Time: <% recipe.prepHours %> hr, <% recipe.prepMin %> min
+                  <% } %>
+                  <!-- check if this check works once "" converts to 0 in form -->
                 </span>
                 |
                 <span>
-                  Cook Time: 0 hr, 0 min
+                  <% if(recipe.cookHours == 0 && recipe.cookMin == 0) { %>
+                    Cook Time: n/a
+                  <% } else { %>
+                    Cook Time: <% recipe.cookHours %> hr, <% recipe.cookMin %> min
+                  <% } %>
                 </span>
               </div>
             </div>
@@ -35,42 +53,172 @@
               </h2>
               <table>
                 <tr>
-                  <td>#</td>
-                  <td>Unit</td>
-                  <td>Ingredient</td>
-                  <td>Preparation</td>
+                  <td class="nums"><%= recipe.amount_0 %></td>
+                  <td id="unit"><%= recipe.unit_0 %></td>
+                  <td id="ing"><%= recipe.ing_0 %></td>
+                  <td class="inputElement"><%= recipe.prep_0 %></td>
                 </tr>
                 <tr>
-                  <td>#</td>
-                  <td>Unit</td>
-                  <td>Ingredient</td>
-                  <td>Preparation</td>
+                  <td class="nums"><%= recipe.amount_1 %></td>
+                  <td id="unit"><%= recipe.unit_1 %></td>
+                  <td id="ing"><%= recipe.ing_1 %></td>
+                  <td class="inputElement"><%= recipe.prep_1 %></td>
                 </tr>
                 <tr>
-                  <td>#</td>
-                  <td>Unit</td>
-                  <td>Ingredient</td>
-                  <td>Preparation</td>
+                  <td class="nums"><%= recipe.amount_2 %></td>
+                  <td id="unit"><%= recipe.unit_2 %></td>
+                  <td id="ing"><%= recipe.ing_2 %></td>
+                  <td class="inputElement"><%= recipe.prep_2 %></td>
+                </tr>
+                <tr>
+                  <td class="nums"><%= recipe.amount_3 %></td>
+                  <td id="unit"><%= recipe.unit_3 %></td>
+                  <td id="ing"><%= recipe.ing_3 %></td>
+                  <td class="inputElement"><%= recipe.prep_3 %></td>
+                </tr>
+                <tr>
+                  <td class="nums"><%= recipe.amount_4 %></td>
+                  <td id="unit"><%= recipe.unit_4 %></td>
+                  <td id="ing"><%= recipe.ing_4 %></td>
+                  <td class="inputElement"><%= recipe.prep_4 %></td>
+                </tr>
+                <tr>
+                  <td class="nums"><%= recipe.amount_5 %></td>
+                  <td id="unit"><%= recipe.unit_5 %></td>
+                  <td id="ing"><%= recipe.ing_5 %></td>
+                  <td class="inputElement"><%= recipe.prep_5 %></td>
+                </tr>
+                <tr>
+                  <td class="nums"><%= recipe.amount_6 %></td>
+                  <td id="unit"><%= recipe.unit_6 %></td>
+                  <td id="ing"><%= recipe.ing_6 %></td>
+                  <td class="inputElement"><%= recipe.prep_6 %></td>
+                </tr>
+                <tr>
+                  <td class="nums"><%= recipe.amount_7 %></td>
+                  <td id="unit"><%= recipe.unit_7 %></td>
+                  <td id="ing"><%= recipe.ing_7 %></td>
+                  <td class="inputElement"><%= recipe.prep_7 %></td>
+                </tr>
+                <tr>
+                  <td class="nums"><%= recipe.amount_8 %></td>
+                  <td id="unit"><%= recipe.unit_8 %></td>
+                  <td id="ing"><%= recipe.ing_8 %></td>
+                  <td class="inputElement"><%= recipe.prep_8 %></td>
+                </tr>
+                <tr>
+                  <td class="nums"><%= recipe.amount_9 %></td>
+                  <td id="unit"><%= recipe.unit_9 %></td>
+                  <td id="ing"><%= recipe.ing_9 %></td>
+                  <td class="inputElement"><%= recipe.prep_9 %></td>
+                </tr>
+                <tr>
+                  <td class="nums"><%= recipe.amount_10 %></td>
+                  <td id="unit"><%= recipe.unit_10 %></td>
+                  <td id="ing"><%= recipe.ing_10 %></td>
+                  <td class="inputElement"><%= recipe.prep_10 %></td>
+                </tr>
+                <tr>
+                  <td class="nums"><%= recipe.amount_11 %></td>
+                  <td id="unit"><%= recipe.unit_11 %></td>
+                  <td id="ing"><%= recipe.ing_11 %></td>
+                  <td class="inputElement"><%= recipe.prep_11 %></td>
+                </tr>
+                <tr>
+                  <td class="nums"><%= recipe.amount_12 %></td>
+                  <td id="unit"><%= recipe.unit_12 %></td>
+                  <td id="ing"><%= recipe.ing_12 %></td>
+                  <td class="inputElement"><%= recipe.prep_12 %></td>
+                </tr>
+                <tr>
+                  <td class="nums"><%= recipe.amount_13 %></td>
+                  <td id="unit"><%= recipe.unit_13 %></td>
+                  <td id="ing"><%= recipe.ing_13 %></td>
+                  <td class="inputElement"><%= recipe.prep_13 %></td>
+                </tr>
+                <tr>
+                  <td class="nums"><%= recipe.amount_14 %></td>
+                  <td id="unit"><%= recipe.unit_14 %></td>
+                  <td id="ing"><%= recipe.ing_14 %></td>
+                  <td class="inputElement"><%= recipe.prep_14 %></td>
+                </tr>
+                <tr>
+                  <td class="nums"><%= recipe.amount_15 %></td>
+                  <td id="unit"><%= recipe.unit_15 %></td>
+                  <td id="ing"><%= recipe.ing_15 %></td>
+                  <td class="inputElement"><%= recipe.prep_15 %></td>
+                </tr>
+                <tr>
+                  <td class="nums"><%= recipe.amount_16 %></td>
+                  <td id="unit"><%= recipe.unit_16 %></td>
+                  <td id="ing"><%= recipe.ing_16 %></td>
+                  <td class="inputElement"><%= recipe.prep_16 %></td>
+                </tr>
+                <tr>
+                  <td class="nums"><%= recipe.amount_17 %></td>
+                  <td id="unit"><%= recipe.unit_17 %></td>
+                  <td id="ing"><%= recipe.ing_17 %></td>
+                  <td class="inputElement"><%= recipe.prep_17 %></td>
+                </tr>
+                <tr>
+                  <td class="nums"><%= recipe.amount_18 %></td>
+                  <td id="unit"><%= recipe.unit_18 %></td>
+                  <td id="ing"><%= recipe.ing_18 %></td>
+                  <td class="inputElement"><%= recipe.prep_18 %></td>
+                </tr>
+                <tr>
+                  <td class="nums"><%= recipe.amount_19 %></td>
+                  <td id="unit"><%= recipe.unit_19 %></td>
+                  <td id="ing"><%= recipe.ing_19 %></td>
+                  <td class="inputElement"><%= recipe.prep_19 %></td>
+                </tr>
+                <tr>
+                  <td class="nums"><%= recipe.amount_20 %></td>
+                  <td id="unit"><%= recipe.unit_20 %></td>
+                  <td id="ing"><%= recipe.ing_20 %></td>
+                  <td class="inputElement"><%= recipe.prep_20 %></td>
+                </tr>
+                <tr>
+                  <td class="nums"><%= recipe.amount_21 %></td>
+                  <td id="unit"><%= recipe.unit_21 %></td>
+                  <td id="ing"><%= recipe.ing_21 %></td>
+                  <td class="inputElement"><%= recipe.prep_21 %></td>
+                </tr>
+                <tr>
+                  <td class="nums"><%= recipe.amount_22 %></td>
+                  <td id="unit"><%= recipe.unit_22 %></td>
+                  <td id="ing"><%= recipe.ing_22 %></td>
+                  <td class="inputElement"><%= recipe.prep_22 %></td>
+                </tr>
+                <tr>
+                  <td class="nums"><%= recipe.amount_23 %></td>
+                  <td id="unit"><%= recipe.unit_23 %></td>
+                  <td id="ing"><%= recipe.ing_23 %></td>
+                  <td class="inputElement"><%= recipe.prep_23 %></td>
+                </tr>
+                <tr>
+                  <td class="nums"><%= recipe.amount_24 %></td>
+                  <td id="unit"><%= recipe.unit_24 %></td>
+                  <td id="ing"><%= recipe.ing_24 %></td>
+                  <td class="inputElement"><%= recipe.prep_24 %></td>
                 </tr>
               </table>
+              <!-- someday, hide empty table forms with if statement to render -->
             </div>
 
             <div id="directions">
               <h2>
                 Directions
               </h2>
-              <ul>
-                <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam enim voluptas quidem reprehenderit aliquam nostrum voluptatibus, minima deserunt incidunt alias, blanditiis ipsa iure beatae cum aliquid magni iusto cumque corporis.</li>
-                <li>Eligendi itaque soluta assumenda incidunt provident, corporis ex consequatur vero labore tempore voluptatibus commodi, dolore quis fuga, placeat magni quas vitae explicabo recusandae perspiciatis. Dolor quisquam fugit quod ut fuga?</li>
-                <li>Dolor iure fugiat aperiam maiores aut magnam harum dicta facere et? Error mollitia quos corrupti sit quaerat labore cupiditate facilis qui, aut voluptas pariatur quidem? Quas perspiciatis amet incidunt provident.</li>
-                <li>Culpa labore alias cum ipsum harum iure ullam laboriosam suscipit, totam at veniam blanditiis quos eligendi officiis aperiam et. Deserunt atque autem error harum maxime iure in laboriosam labore repellat.</li>
-                <li>Maxime asperiores impedit, facilis assumenda sed voluptate dolorum, iste ratione eius id repellat sint, quibusdam omnis error aspernatur. Fugiat nulla enim, atque vel. Est nobis, totam distinctio rerum porro eligendi.</li>
-                <li>Pariatur est quidem neque praesentium repudiandae perspiciatis corporis, vel, veniam laborum et consequatur commodi molestiae sed deleniti quae, aperiam accusamus eum. Ducimus ratione porro inventore cupiditate eveniet a voluptatum dolores?</li>
-              </ul>
+              <!-- display direction step list here, reuse code from form page -->
+
             </div>
 
             <div id="source">
-              Source: <span id="url">http://fakey-fake.com/not_a_real_page/stuff</span>
+              <% if(recipe.source != "") { %>
+                Source: <% recipe.source %>
+              <% } %>
+              <!-- make it a link? if so, style it -->
             </div>
           </div>
         </div>

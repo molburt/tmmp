@@ -15,7 +15,7 @@ nav {
     margin-bottom: 40px;
 }
 
-nav a {
+nav a, nav a:visited {
     color: white;
     text-decoration: none;
     padding-right: 25px;
@@ -47,4 +47,22 @@ nav a {
 #source {
     text-align: center;
     color: grey;
+}
+
+hr {
+    margin: 25px 0px;
+}
+
+.edit_icon {
+    margin-left: 15px;
+    font-size: 21px;
+    color: dodgerblue;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:visited {
+    color: dodgerblue;
 }

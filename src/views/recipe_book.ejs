@@ -1,6 +1,7 @@
  <!DOCTYPE html>
 <html>
   <head>
+    <link rel="stylesheet" href="/css/form_styles.css">
     <%- include('partials/head'); %>
   </head>
   <body>
@@ -14,7 +15,22 @@
           <% for(i=0; i<recipe_list.length; i++) { %>
               <tr>
                   <td><a href="/recipe_book/<%= recipe_list[i]._id %>"> <%= recipe_list[i].name %> </a></td>
-                  <td>(<%= recipe_list[i].author %>)</td>
+
+                  <% if(recipe_list[i].author != "") { %>
+                    <td>(<%= recipe_list[i].author %>)</td>
+                  <% } %>
+
+                  <td>
+                    <!--<span class="edit_icon">
+                      <a href="/edit_recipe/<%= recipe_list[i]._id %>">
+                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                      </a>
+                    </span>-->
+                    <form method="POST" action="recipe_book/<%= recipe_list[i]._id %>?_method=delete" enctype="application/x-www-form-urlencoded">
+                      <input type="submit" value="Delete" class="button delete_button" />
+                    </form>
+                  </td>
+                  
               </tr>
           <% } %>
       </table>
