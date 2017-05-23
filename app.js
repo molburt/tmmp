@@ -97,7 +97,7 @@ app.get("/edit_recipe/:id", function(req,res){
 app.post('/recipe_form', function(req, res) {
     mongodb.connect(url, function(err, db){
         var collection = db.collection('recipes');
-        var recipe = {
+        var recipe = { // is there a better way?
             name: req.body.name,
             author: req.body.author,
             picture: req.body.picture,
@@ -105,7 +105,6 @@ app.post('/recipe_form', function(req, res) {
             prepMin: req.body.prepMin,
             cookHours: req.body.cookHours,
             cookMin: req.body.cookMin,
-            // for loops for ing and directions?
             amount_0: req.body.amount_0,
             unit_0: req.body.unit_0,
             ing_0: req.body.ing_0,
@@ -207,6 +206,31 @@ app.post('/recipe_form', function(req, res) {
             ing_24: req.body.ing_24,
             prep_24: req.body.prep_24,
             // directions here
+            step_0: req.body.step_0,
+            step_1: req.body.step_1,
+            step_2: req.body.step_2,
+            step_3: req.body.step_3,
+            step_4: req.body.step_4,
+            step_5: req.body.step_5,
+            step_6: req.body.step_6,
+            step_7: req.body.step_7,
+            step_8: req.body.step_8,
+            step_9: req.body.step_9,
+            step_10: req.body.step_10,
+            step_11: req.body.step_11,
+            step_12: req.body.step_12,
+            step_13: req.body.step_13,
+            step_14: req.body.step_14,
+            step_15: req.body.step_15,
+            step_16: req.body.step_16,
+            step_17: req.body.step_17,
+            step_18: req.body.step_18,
+            step_19: req.body.step_19,
+            step_20: req.body.step_20,
+            step_21: req.body.step_21,
+            step_22: req.body.step_22,
+            step_23: req.body.step_23,
+            step_24: req.body.step_24,
             source: req.body.source
         };
         collection.insertOne(recipe, function(err, results) {

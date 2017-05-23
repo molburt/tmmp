@@ -32,7 +32,7 @@
                   <% if(recipe.prepHours == 0 && recipe.prepMin == 0) { %>
                     Prep Time: n/a
                   <% } else { %>
-                    Prep Time: <% recipe.prepHours %> hr, <% recipe.prepMin %> min
+                    Prep Time: <%= recipe.prepHours %> hr, <%= recipe.prepMin %> min
                   <% } %>
                   <!-- check if this check works once "" converts to 0 in form -->
                 </span>
@@ -41,7 +41,7 @@
                   <% if(recipe.cookHours == 0 && recipe.cookMin == 0) { %>
                     Cook Time: n/a
                   <% } else { %>
-                    Cook Time: <% recipe.cookHours %> hr, <% recipe.cookMin %> min
+                    Cook Time: <%= recipe.cookHours %> hr, <%= recipe.cookMin %> min
                   <% } %>
                 </span>
               </div>
@@ -211,12 +211,139 @@
                 Directions
               </h2>
               <!-- display direction step list here, reuse code from form page -->
+              <ul>
+                <% if(recipe.step_0 != null) { %>
+                  <li>
+                    <%= recipe.step_0 %>
+                  </li>
+                <% } %>
+                <% if(recipe.step_1 != null) { %>
+                  <li>
+                    <%= recipe.step_1 %>
+                  </li>
+                <% } %>
+                <% if(recipe.step_2 != null) { %>
+                  <li>
+                    <%= recipe.step_2 %>
+                  </li>
+                <% } %>
+                <% if(recipe.step_3 != null) { %>
+                  <li>
+                    <%= recipe.step_3 %>
+                  </li>
+                <% } %>
+                <% if(recipe.step_4 != null) { %>
+                  <li>
+                    <%= recipe.step_4 %>
+                  </li>
+                <% } %>
+                <% if(recipe.step_5 != null) { %>
+                  <li>
+                    <%= recipe.step_5 %>
+                  </li>
+                <% } %>
+                <% if(recipe.step_6 != null) { %>
+                  <li>
+                    <%= recipe.step_6 %>
+                  </li>
+                <% } %>
+                <% if(recipe.step_7 != null) { %>
+                  <li>
+                    <%= recipe.step_7 %>
+                  </li>
+                <% } %>
+                <% if(recipe.step_8 != null) { %>
+                  <li>
+                    <%= recipe.step_8 %>
+                  </li>
+                <% } %>
+                <% if(recipe.step_9 != null) { %>
+                  <li>
+                    <%= recipe.step_9 %>
+                  </li>
+                <% } %>
+                <% if(recipe.step_10 != null) { %>
+                  <li>
+                    <%= recipe.step_10 %>
+                  </li>
+                <% } %>
+                <% if(recipe.step_11 != null) { %>
+                  <li>
+                    <%= recipe.step_11 %>
+                  </li>
+                <% } %>
+                <% if(recipe.step_12 != null) { %>
+                  <li>
+                    <%= recipe.step_12 %>
+                  </li>
+                <% } %>
+                <% if(recipe.step_13 != null) { %>
+                  <li>
+                    <%= recipe.step_13 %>
+                  </li>
+                <% } %>
+                <% if(recipe.step_14 != null) { %>
+                  <li>
+                    <%= recipe.step_14 %>
+                  </li>
+                <% } %>
+                <% if(recipe.step_15 != null) { %>
+                  <li>
+                    <%= recipe.step_15 %>
+                  </li>
+                <% } %>
+                <% if(recipe.step_16 != null) { %>
+                  <li>
+                    <%= recipe.step_16 %>
+                  </li>
+                <% } %>
+                <% if(recipe.step_17 != null) { %>
+                  <li>
+                    <%= recipe.step_17 %>
+                  </li>
+                <% } %>
+                <% if(recipe.step_18 != null) { %>
+                  <li>
+                    <%= recipe.step_18 %>
+                  </li>
+                <% } %>
+                <% if(recipe.step_19 != null) { %>
+                  <li>
+                    <%= recipe.step_19 %>
+                  </li>
+                <% } %>
+                <% if(recipe.step_20 != null) { %>
+                  <li>
+                    <%= recipe.step_20 %>
+                  </li>
+                <% } %>
+                <% if(recipe.step_21 != null) { %>
+                  <li>
+                    <%= recipe.step_21 %>
+                  </li>
+                <% } %>
+                <% if(recipe.step_22 != null) { %>
+                  <li>
+                    <%= recipe.step_22 %>
+                  </li>
+                <% } %>
+                <% if(recipe.step_23 != null) { %>
+                  <li>
+                    <%= recipe.step_23 %>
+                  </li>
+                <% } %>
+                <% if(recipe.step_24 != null) { %>
+                  <li>
+                    <%= recipe.step_24 %>
+                  </li>
+                <% } %>
+              </ul>
 
             </div>
 
             <div id="source">
-              <% if(recipe.source != "") { %>
-                Source: <% recipe.source %>
+              <% if(recipe.source != null) { %>
+                Source: <%= recipe.source %>
               <% } %>
               <!-- make it a link? if so, style it -->
             </div>
